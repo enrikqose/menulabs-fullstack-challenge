@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\WeatherService;
+use App\Services\WeatherService\OpenWeatherMapService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +13,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->singleton(WeatherService::class, function ($app) {
+            return new OpenWeatherMapService(env("OPEN_WEATHER_MAP_API_KEY"));
+        });
     }
 
     /**
@@ -21,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }

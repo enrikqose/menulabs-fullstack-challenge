@@ -18,5 +18,9 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN pecl install -o -f redis-5.3.7 \
+    &&  rm -rf /tmp/pear \
+    &&  docker-php-ext-enable redis
+
 RUN a2enmod rewrite
 RUN service apache2 restart

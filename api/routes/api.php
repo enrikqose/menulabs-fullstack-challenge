@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return response()->json([
-        'message' => 'all systems are a go',
-        'users' => \App\Models\User::all(),
-    ]);
+    return response("api");
 });
+
+Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
+Route::get('/users/current-weather', [\App\Http\Controllers\UserController::class, 'currentWeatherOverview']);
+Route::get('/users/{userId}/current-weather', [\App\Http\Controllers\UserController::class, 'currentWeather'])
+    ->whereNumber("userId");

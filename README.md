@@ -1,6 +1,11 @@
+# IMPORTANT!
+- I have used OpenWeatherMap to provide weather data, if you don't have an api key you can use mine `9a4ef70530a91b4a2841d2c8d7cc0953` I also have left it on .env.example just in case
+- To run the frontend now there is an additional step from the original setup. You need to copy `frontend/.env.example` to `frontend/.env.local` or `frontend/.env`
+- I have modified the Dockerfile for php because it did not include redis extension
 # Fullstack Challenge
 
 ## Instructions
+
 Using Laravel and VueJS, create an application which shows the weather for a set of users.
 - Clone this repository. 
 - Once completed, send a link of the clone repository to interviewer and let them know how long the exercise took. 
